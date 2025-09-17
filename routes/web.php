@@ -16,6 +16,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Grup route untuk Master
 Route::prefix('master')->name('master.')->group(function () {
     Route::get('/equipment', [EquipmentController::class, 'index'])->name('equipment');
+    Route::get('/equipment/getAll', [EquipmentController::class, 'getAll'])->name('equipment.getAll');
     // Tambahkan route lain di sini, misalnya:
     // Route::get('/machine', [MachineController::class, 'index'])->name('machine');
+});
+Route::prefix('user-management')->name('user-management')->group(function () {
+    Route::get('/user', [EquipmentController::class, 'index'])->name('user');
+    Route::get('/user/getAll', [EquipmentController::class, 'getAll'])->name('user.getAll');
+    // Tambahkan route lain di sini, misalnya:
+    // Route::get('/machine', [MachineContr oller::class, 'index'])->name('machine');
 });
