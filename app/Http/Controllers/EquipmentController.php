@@ -96,18 +96,17 @@ class EquipmentController extends Controller
         return redirect()->route('master.equipment')
             ->with('success', 'Equipment updated successfully.');
     }
-public function destroy(string $id)
-{
-    try {
-        $equipment = Equipment::findOrFail($id);
-        $equipment->delete();
+    public function destroy(string $id)
+    {
+        try {
+            $equipment = Equipment::findOrFail($id);
+            $equipment->delete();
 
-        return redirect()->route('master.equipment')
-            ->with('success', 'Equipment deleted successfully!');
-    } catch (\Exception $e) {
-        return redirect()->route('master.equipment')
-            ->with('error', 'Failed to delete equipment. Please try again.');
+            return redirect()->route('master.equipment')
+                ->with('success', 'Equipment deleted successfully!');
+        } catch (\Exception $e) {
+            return redirect()->route('master.equipment')
+                ->with('error', 'Failed to delete equipment. Please try again.');
+        }
     }
-}
-
 }

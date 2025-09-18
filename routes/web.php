@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\UserController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -24,9 +25,9 @@ Route::prefix('master')->name('master.')->group(function () {
     // Tambahkan route lain di sini, misalnya:
     // Route::get('/machine', [MachineController::class, 'index'])->name('machine');
 });
-Route::prefix('user-management')->name('user-management')->group(function () {
-    Route::get('/user', [EquipmentController::class, 'index'])->name('user');
-    Route::get('/user/getAll', [EquipmentController::class, 'getAll'])->name('user.getAll');
+Route::prefix('user-management')->name('user-management.')->group(function () {
+    Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::get('/user/getAll', [UserController::class, 'getAll'])->name('user.getAll');
     // Tambahkan route lain di sini, misalnya:
     // Route::get('/machine', [MachineContr oller::class, 'index'])->name('machine');
 });

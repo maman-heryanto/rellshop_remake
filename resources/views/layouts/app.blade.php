@@ -81,100 +81,6 @@
                                 <span></span>
                             </span>
                         </button>
-
-                        <!-- App Search-->
-                        {{-- <form class="app-search d-none d-md-block">
-                            <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Search All" autocomplete="off"
-                                    id="search-options" value="">
-                                <span class="mdi mdi-magnify search-widget-icon"></span>
-                                <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
-                                    id="search-close-options"></span>
-                            </div>
-                            <div class="dropdown-menu dropdown-menu-lg" id="search-dropdown">
-                                <div data-simplebar style="max-height: 320px;">
-                                    <!-- item-->
-                                    <div class="dropdown-header">
-                                        <h6 class="text-overflow text-muted mb-0 text-uppercase">Recent Searches</h6>
-                                    </div>
-
-                                    <div class="dropdown-item bg-transparent text-wrap">
-                                        <a href="index.html" class="btn btn-soft-secondary btn-sm rounded-pill">how to
-                                            setup <i class="mdi mdi-magnify ms-1"></i></a>
-                                        <a href="index.html" class="btn btn-soft-secondary btn-sm rounded-pill">buttons
-                                            <i class="mdi mdi-magnify ms-1"></i></a>
-                                    </div>
-                                    <!-- item-->
-                                    <div class="dropdown-header mt-2">
-                                        <h6 class="text-overflow text-muted mb-1 text-uppercase">Pages</h6>
-                                    </div>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="ri-bubble-chart-line align-middle fs-18 text-muted me-2"></i>
-                                        <span>Analytics Dashboard</span>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="ri-lifebuoy-line align-middle fs-18 text-muted me-2"></i>
-                                        <span>Help Center</span>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="ri-user-settings-line align-middle fs-18 text-muted me-2"></i>
-                                        <span>My account settings</span>
-                                    </a>
-
-                                    <!-- item-->
-                                    <div class="dropdown-header mt-2">
-                                        <h6 class="text-overflow text-muted mb-2 text-uppercase">Members</h6>
-                                    </div>
-
-                                    <div class="notification-list">
-                                        <!-- item -->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
-                                            <div class="d-flex">
-                                                <img src="assets/images/users/avatar-2.jpg"
-                                                    class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                <div class="flex-grow-1">
-                                                    <h6 class="m-0">Angela Bernier</h6>
-                                                    <span class="fs-11 mb-0 text-muted">Manager</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <!-- item -->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
-                                            <div class="d-flex">
-                                                <img src="assets/images/users/avatar-3.jpg"
-                                                    class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                <div class="flex-grow-1">
-                                                    <h6 class="m-0">David Grasso</h6>
-                                                    <span class="fs-11 mb-0 text-muted">Web Designer</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <!-- item -->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
-                                            <div class="d-flex">
-                                                <img src="assets/images/users/avatar-5.jpg"
-                                                    class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                <div class="flex-grow-1">
-                                                    <h6 class="m-0">Mike Bunch</h6>
-                                                    <span class="fs-11 mb-0 text-muted">React Developer</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="text-center pt-3 pb-1">
-                                    <a href="pages-search-results.html" class="btn btn-primary btn-sm">View All
-                                        Results <i class="ri-arrow-right-line ms-1"></i></a>
-                                </div>
-                            </div>
-                        </form> --}}
                     </div>
 
                     <div class="d-flex align-items-center">
@@ -311,7 +217,7 @@
                 </button>
             </div>
 
-            <div class="dropdown sidebar-user m-1 rounded">
+            {{-- <div class="dropdown sidebar-user m-1 rounded">
                 <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="d-flex align-items-center gap-2">
@@ -324,7 +230,7 @@
                         </span>
                     </span>
                 </button>
-            </div>
+            </div> --}}
             <div id="scrollbar">
                 <div class="container-fluid">
                     <div id="two-column-menu">
@@ -339,11 +245,11 @@
                         </li> <!-- end Dashboard Menu -->
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                            <a class="nav-link menu-link" href="#roll" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="roll">
                                 <i class="ri-shopping-cart-2-line"></i> <span data-key="t-dashboards">ROLL (soon)</span>
                             </a>
-                            <div class="collapse menu-dropdown" id="sidebarDashboards">
+                            <div class="collapse menu-dropdown" id="roll">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
                                         <a href="{{ route('home') }}" class="nav-link">
@@ -358,11 +264,11 @@
                         </li> <!-- end Dashboard Master -->
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                                <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Master</span>
+                            <a class="nav-link menu-link" href="#masterData" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="masterData">
+                                <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Master Data</span>
                             </a>
-                            <div class="collapse menu-dropdown" id="sidebarDashboards">
+                            <div class="collapse menu-dropdown" id="masterData">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
                                         <a href="{{ route('master.equipment') }}" class="nav-link">
@@ -377,7 +283,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarAuth"
+                            <a class="nav-link menu-link" href="{{ route('user-management.user') }}"
                                 role="button" aria-expanded="false" aria-controls="sidebarAuth">
                                 <i class="ri-account-circle-line"></i> <span
                                     data-key="t-authentication">Data User</span>
@@ -416,9 +322,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
-                            {{-- <script>
-                                document.write(new Date().getFullYear())
-                            </script> © HomeBased. --}}
+        
                         </div>
                         <div class="col-sm-6">
                             <div class="text-sm-end d-none d-sm-block">
@@ -472,7 +376,6 @@
     
     <!-- dataTables -->
     <script src="{{ asset('custom/jquery-3.6.0.min.js') }}"></script>
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> --}}
 
     <!--datatable js-->
     <script src="{{ asset('custom/datatable/js/jquery.dataTables.min.js') }}"></script>

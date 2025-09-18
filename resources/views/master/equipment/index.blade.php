@@ -94,7 +94,6 @@
                 </div>
 
                 <form action="#" method="POST">
-                {{-- <form action="{{ route('master.equipment.store') }}" method="POST"> --}}
                     @csrf
                     @method('PUT')
                     <div class="modal-body">
@@ -172,7 +171,7 @@
                 ]
             });
 
-            // SweetAlert Success
+            // SweetAlert
             @if (session('success'))
                 Swal.fire({
                     icon: 'success',
@@ -182,8 +181,6 @@
                     timer: 2000
                 });
             @endif
-
-            // SweetAlert Error
             @if (session('error'))
                 Swal.fire({
                     icon: 'error',
@@ -193,7 +190,7 @@
             @endif
         });
     </script>
-
+    {{-- sweetAlert VALIDATION --}}
     @if ($errors->any())
         <script>
             Swal.fire({
