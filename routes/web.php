@@ -17,6 +17,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::prefix('master')->name('master.')->group(function () {
     Route::get('/equipment', [EquipmentController::class, 'index'])->name('equipment');
     Route::get('/equipment/getAll', [EquipmentController::class, 'getAll'])->name('equipment.getAll');
+    Route::post('/equipment/store', [EquipmentController::class, 'store'])->name('equipment.store');
+    Route::put('/master/equipment/{id}', [EquipmentController::class, 'update'])->name('equipment.update');
+    Route::delete('/master/equipment/{id}', [EquipmentController::class, 'destroy'])->name('equipment.destroy');
+
     // Tambahkan route lain di sini, misalnya:
     // Route::get('/machine', [MachineController::class, 'index'])->name('machine');
 });

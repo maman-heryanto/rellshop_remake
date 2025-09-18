@@ -50,7 +50,7 @@
                                     {{-- <img src="{{ asset('velzon/assets/images/logo/logo-light.png') }}" alt="" height="20"> --}}
                                 </a>
                             </div>
-                            <p class="mt-3 fs-15 fw-medium">Rellshop | {{ __('Login') }}</p>
+                            <p class="mt-3 fs-15 fw-medium">Rellshop Remake | {{ __('Login') }}</p>
                         </div>
                     </div>
                 </div>

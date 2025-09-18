@@ -35,6 +35,9 @@
     <link rel="stylesheet" href="{{ asset('custom/datatable/css/dataTables.bootstrap5.min.css') }}" />
     <!--datatable responsive css-->
     <link rel="stylesheet" href="{{ asset('custom/datatable/css/responsive.bootstrap.min.css') }}" />
+    
+    <!-- Sweet Alert css-->
+    <link href="{{ asset('velzon/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 
 
 </head>
@@ -483,6 +486,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script> --}}
 
     <script src="{{ asset('custom/script.js') }}"></script>
+     <!-- Sweet Alerts js -->
+    <script src="{{ asset('velzon/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     @stack('scripts')
 </body>
 
