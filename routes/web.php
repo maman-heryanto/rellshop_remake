@@ -28,6 +28,5 @@ Route::prefix('master')->name('master.')->group(function () {
 Route::prefix('user-management')->name('user-management.')->group(function () {
     Route::get('/user', [UserController::class, 'index'])->name('user');
     Route::get('/user/getAll', [UserController::class, 'getAll'])->name('user.getAll');
-    // Tambahkan route lain di sini, misalnya:
-    // Route::get('/machine', [MachineContr oller::class, 'index'])->name('machine');
+    
 });

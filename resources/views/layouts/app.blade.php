@@ -16,10 +16,8 @@
     <!-- jsvectormap css -->
     <link href="{{ asset('velzon/assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet"
         type="text/css" />
-
     <!--Swiper slider css-->
     <link href="{{ asset('velzon/assets/libs/swiper/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css" />
-
     <!-- Layout config Js -->
     <script src="{{ asset('velzon/assets/js/layout.js') }}"></script>
     <!-- Bootstrap Css -->
@@ -30,15 +28,12 @@
     <link href="{{ asset('velzon/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="{{ asset('velzon/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
-
     <!--datatable css-->
     <link rel="stylesheet" href="{{ asset('custom/datatable/css/dataTables.bootstrap5.min.css') }}" />
     <!--datatable responsive css-->
     <link rel="stylesheet" href="{{ asset('custom/datatable/css/responsive.bootstrap.min.css') }}" />
-    
     <!-- Sweet Alert css-->
     <link href="{{ asset('velzon/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
-
 
 </head>
 
@@ -357,7 +352,8 @@
     <script src="{{ asset('velzon/assets/libs/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('velzon/assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
     <script src="{{ asset('velzon/assets/js/plugins.js') }}"></script>
-
+    <!-- Flatpickr -->
+    <script src="{{ asset('velzon/assets/libs/flatpickr/flatpickr.min.js') }}"></script>
     <!-- apexcharts -->
     <script src="{{ asset('velzon/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 

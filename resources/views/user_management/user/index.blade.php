@@ -16,7 +16,7 @@
                     </div><!-- end card header -->
 
                     <div class="card-body">
-                        <table id="user_datatables" class="table table-bordered table-striped">
+                        <table id="user_datatables" class="table table-bordered table-striped nowrap">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -35,6 +35,23 @@
 @endsection
 
 @push('scripts')
-
-
+    <script>
+        $(document).ready(function() {
+              let table = $('#user_datatables').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{ route('user-management.user.getAll') }}',
+                columns: [
+                    { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
+                    { data: 'name', name: 'name' },
+                    { data: 'email', name: 'email' },
+                    { data: 'created_at', name: 'created_at' },
+                    { data: 'action', name: 'action', orderable: false, searchable: false },
+                ],
+                order: [[3, 'desc']],
+                responsive: true,  
+                scrollX: true    
+            });
+        });
+    </script>
 @endpush

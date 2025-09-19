@@ -8,6 +8,26 @@
                     <div class="card-header align-items-center d-flex">
                         <h4 class="card-title mb-0 flex-grow-1">Equipment Datatable</h4>
                         <div class="flex-shrink-0">
+                            {{-- <div class="form-check form-switch form-switch-right form-switch-md">
+                                <label class="form-label mb-0">Date</label>
+                                <input type="text" class="form-control" data-provider="flatpickr"
+                                    data-date-format="d M, Y" data-range-date="true" id="filter_date">
+                            </div> --}}
+                            <div class="form-check form-switch form-switch-right form-switch-md">
+                                <label class="form-label mb-0">Machine</label>
+                                <select id="filter_machine_id" class="form-control">
+                                    <option value="">-- All Machines --</option>
+                                    @foreach ($machines as $machine)
+                                        <option value="{{ $machine->id }}">{{ $machine->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-check form-switch form-switch-right form-switch-md">
+                                <button type="button" class="btn btn-primary" id="btnFilter">Filter</button>
+                            </div>
+                            <div class="form-check form-switch form-switch-right form-switch-md">
+                                <button type="button" class="btn btn-warning" id="btnReset">Reset</button>
+                            </div>
                             <div class="form-check form-switch form-switch-right form-switch-md">
                                 <button type="button" class="btn btn-primary " data-bs-toggle="modal"
                                     data-bs-target="#showModalAdd"><i class="ri-add-circle-line"></i> Add Equipment</button>
@@ -121,7 +141,8 @@
 
                         <div class="mb-3">
                             <label for="specification" class="form-label">Specification</label>
-                            <textarea name="specification" id="specification" class="form-control" rows="3" placeholder="Enter specification"></textarea>
+                            <textarea name="specification" id="specification" class="form-control" rows="3"
+                                placeholder="Enter specification"></textarea>
                         </div>
                     </div>
 
@@ -138,12 +159,39 @@
 @endsection
 
 @push('scripts')
+    {{-- <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll("[data-provider=flatpickr]").forEach(function(el) {
+                if (el.dataset.rangeDate != undefined) {
+                    flatpickr(el, {
+                        mode: "range",
+                        dateFormat: "d/m/Y", // format DD/MM/YYYY
+                        locale: {
+                            rangeSeparator: " - " // ubah pemisah default " to "
+                        }
+                    });
+                } else {
+                    flatpickr(el, {
+                        dateFormat: "d/m/Y"
+                    });
+                }
+            });
+        });
+    </script> --}}
     <script>
         $(document).ready(function() {
-            $('#equipment_datatables').DataTable({
+            let table = $('#equipment_datatables').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('master.equipment.getAll') }}",
+                responsive: true,  
+                scrollX: true,
+                ajax: {
+                    url: "{{ route('master.equipment.getAll') }}",
+                    data: function (d) {
+                        // d.date = $('#filter_date').val(); 
+                        d.machine_id = $('#filter_machine_id').val();
+                    }
+                },
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
@@ -171,6 +219,17 @@
                 ]
             });
 
+
+            $('#btnFilter').on('click', function() {
+                table.ajax.reload();
+            });
+
+            $('#btnReset').on('click', function() {
+                // $('#filter_date').val('');
+                $('#filter_machine_id').val('');
+                table.ajax.reload();
+            });
+
             // SweetAlert
             @if (session('success'))
                 Swal.fire({
@@ -181,13 +240,7 @@
                     timer: 2000
                 });
             @endif
-            @if (session('error'))
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: "{{ session('error') }}",
-                });
-            @endif
+            
         });
     </script>
     {{-- sweetAlert VALIDATION --}}
@@ -203,7 +256,7 @@
 
     <script>
         // Handle Update
-        $(document).on('click', '.editEquipmentBtn', function () {
+        $(document).on('click', '.editEquipmentBtn', function() {
             let id = $(this).data('id');
             let machine_id = $(this).data('machine_id');
             let name = $(this).data('name');
@@ -219,27 +272,26 @@
         });
     </script>
     <script>
-    // Handle Delete
-    $(document).on('submit', '.deleteForm', function(e) {
-        e.preventDefault();
+        // Handle Delete
+        $(document).on('submit', '.deleteForm', function(e) {
+            e.preventDefault();
 
-        let form = this;
+            let form = this;
 
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "This action cannot be undone!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'Cancel'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                form.submit(); 
-            }
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This action cannot be undone!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
         });
-    });
-</script>
-
+    </script>
 @endpush

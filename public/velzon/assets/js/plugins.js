@@ -5,7 +5,7 @@
 //         "<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/toastify-js'></script>"
 //     ),
 //     document.writeln(
-//         "<script type='text/javascript' src='velzon/assets/libs/choices.js/public/assets/scripts/choices.min.js'></script>"
+//         "<script type='text/javascript' src='velzon/assets/libs/choices.js'></script>"
 //     ),
 //     document.writeln(
 //         "<script type='text/javascript' src='velzon/assets/libs/flatpickr/flatpickr.min.js'></script>"

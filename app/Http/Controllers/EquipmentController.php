@@ -29,9 +29,26 @@ class EquipmentController extends Controller
         return view('master.equipment.index', $data);
     }
 
-    public function getAll()
+   public function getAll(Request $request)
     {
         $data = Equipment::with('machine')->select('equipments.*');
+
+        // ✅ filter date range
+        if ($request->date) {
+            $dates = explode(" - ", $request->date);
+
+            if (count($dates) === 2) {
+                $start = \Carbon\Carbon::createFromFormat('d/m/Y', trim($dates[0]))->startOfDay();
+                $end   = \Carbon\Carbon::createFromFormat('d/m/Y', trim($dates[1]))->endOfDay();
+
+                $data->whereBetween('equipments.created_at', [$start, $end]);
+            }
+        }
+
+        // ✅ filter machine (kalau nanti kamu pakai dropdown machine_id)
+        if ($request->machine_id) {
+            $data->where('equipments.machine_id', $request->machine_id);
+        }
 
         return DataTables::of($data)
             ->addIndexColumn()
@@ -55,7 +72,6 @@ class EquipmentController extends Controller
                         ' . csrf_field() . method_field("DELETE") . '
                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                     </form>
-
                 ';
             })
             ->rawColumns(['action'])
