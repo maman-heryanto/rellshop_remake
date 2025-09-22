@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
    
-        public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -52,20 +53,19 @@ class UserController extends Controller
                 return $row->created_at 
                     ? $row->created_at->format('d/m/Y H:i') : '-';
             })
-            ->addColumn('action', function ($row) {
+          ->addColumn('action', function ($row) {
                 return '
                     <button 
                         type="button" 
                         class="btn btn-sm btn-primary editUserBtn"
-                        data-id="' . $row->id . '" 
-                        data-machine_id="' . $row->machine_id . '"
+                        data-id="' . $row->id . '"
                         data-name="' . $row->name . '" 
-                        data-specification="' . $row->specification . '"
+                        data-email="' . $row->email . '"
                         data-bs-toggle="modal" 
                         data-bs-target="#showModalEdit">
                         Edit
                     </button>
-                    <form action="#" method="POST" class="deleteForm" style="display:inline-block">
+                    <form action="' . route('user-management.user.destroy', $row->id) . '" method="POST" class="deleteForm" style="display:inline-block">
                         ' . csrf_field() . method_field("DELETE") . '
                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                     </form>
@@ -76,50 +76,67 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'                  => 'required|string|max:100',
+            'email'                 => 'required|email|unique:users,email',
+            'password'              => 'required|min:6|confirmed',
+        ]);
+        
+        User::create([
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'password'  => Hash::make($request->password),
+        ]);
+
+
+        return redirect()->back()->with('success', 'User created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'name'     => 'required|string|max:100',
+            'email'    => 'required|email|unique:users,email,' . $user->id,
+            'password' => 'nullable|min:6|confirmed', // password opsional
+        ]);
+
+        $user->name  = $request->name;
+        $user->email = $request->email;
+
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'User updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+         try {
+            $user = User::findOrFail($id);
+            $user->delete();
+
+            return redirect()->route('user-management.user')
+                ->with('success', 'User deleted successfully!');
+        } catch (\Exception $e) {
+            return redirect()->route('user-management.user')
+                ->with('error', 'Failed to delete user. Please try again.');
+        }
     }
 }

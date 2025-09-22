@@ -19,8 +19,8 @@ Route::prefix('master')->name('master.')->group(function () {
     Route::get('/equipment', [EquipmentController::class, 'index'])->name('equipment');
     Route::get('/equipment/getAll', [EquipmentController::class, 'getAll'])->name('equipment.getAll');
     Route::post('/equipment/store', [EquipmentController::class, 'store'])->name('equipment.store');
-    Route::put('/master/equipment/{id}', [EquipmentController::class, 'update'])->name('equipment.update');
-    Route::delete('/master/equipment/{id}', [EquipmentController::class, 'destroy'])->name('equipment.destroy');
+    Route::put('/equipment/{id}', [EquipmentController::class, 'update'])->name('equipment.update');
+    Route::delete('/equipment/{id}', [EquipmentController::class, 'destroy'])->name('equipment.destroy');
 
     // Tambahkan route lain di sini, misalnya:
     // Route::get('/machine', [MachineController::class, 'index'])->name('machine');
@@ -28,5 +28,7 @@ Route::prefix('master')->name('master.')->group(function () {
 Route::prefix('user-management')->name('user-management.')->group(function () {
     Route::get('/user', [UserController::class, 'index'])->name('user');
     Route::get('/user/getAll', [UserController::class, 'getAll'])->name('user.getAll');
-    
+    Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
+    Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 });
