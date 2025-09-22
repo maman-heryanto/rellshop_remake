@@ -36,17 +36,19 @@
                     </div><!-- end card header -->
 
                     <div class="card-body">
-                        <table id="equipment_datatables" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Machine</th>
-                                    <th>Name</th>
-                                    <th>Specification</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                        </table>
+                        <div class="table-responsive">
+                            <table id="equipment_datatables" class="table table-bordered table-striped nowrap" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Machine</th>
+                                        <th>Name</th>
+                                        <th>Specification</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div><!--end col-->
@@ -184,7 +186,7 @@
                 processing: true,
                 serverSide: true,
                 responsive: true,  
-                scrollX: true,
+                // scrollX: true,
                 ajax: {
                     url: "{{ route('master.equipment.getAll') }}",
                     data: function (d) {

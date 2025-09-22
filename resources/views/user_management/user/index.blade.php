@@ -16,17 +16,19 @@
                     </div><!-- end card header -->
 
                     <div class="card-body">
-                        <table id="user_datatables" class="table table-bordered table-striped nowrap">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>created At</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                        </table>
+                        <div class="table-responsive">
+                            <table id="user_datatables" class="table table-bordered table-striped nowrap" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>created At</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div><!--end col-->
@@ -50,7 +52,7 @@
                 ],
                 order: [[3, 'desc']],
                 responsive: true,  
-                scrollX: true    
+                // scrollX: true    
             });
         });
     </script>
