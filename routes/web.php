@@ -31,4 +31,10 @@ Route::prefix('user-management')->name('user-management.')->group(function () {
     Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
     Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+    //profile
+    Route::get('user/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::put('user/profile/{id}', [UserController::class, 'updateProfile'])->name('user.profile.update');
+    Route::put('user/profile/{id}/password', [UserController::class, 'changePassword'])->name('user.profile.password');
+
 });
+

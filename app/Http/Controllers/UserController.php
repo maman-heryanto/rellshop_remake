@@ -139,4 +139,48 @@ class UserController extends Controller
                 ->with('error', 'Failed to delete user. Please try again.');
         }
     }
+
+    public function profile()
+    {
+
+        return view('user_management.profile.index');
+    }
+
+    public function updateProfile(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'name'  => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+        ]);
+
+        $user->name  = $request->name;
+        $user->email = $request->email;
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile updated successfully.');
+    }
+
+    public function changePassword(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'old_password' => 'required',
+            'password'     => 'required|min:6|confirmed',
+        ]);
+
+        if (!Hash::check($request->old_password, $user->password)) {
+            return redirect()->back()->withErrors(['old_password' => 'Old password is incorrect']);
+        }
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect()->back()->with('success', 'Password updated successfully.');
+    }   
+
+
 }
