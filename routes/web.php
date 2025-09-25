@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SessionController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -35,6 +36,9 @@ Route::prefix('user-management')->name('user-management.')->group(function () {
     Route::get('user/profile', [UserController::class, 'profile'])->name('user.profile');
     Route::put('user/profile/{id}', [UserController::class, 'updateProfile'])->name('user.profile.update');
     Route::put('user/profile/{id}/password', [UserController::class, 'changePassword'])->name('user.profile.password');
-
+    //session
+    Route::get('/session', [SessionController::class, 'index'])->name('session');
+    Route::get('/session/getAll', [SessionController::class, 'getAll'])->name('session.getAll');
+    Route::delete('/session/{id}', [SessionController::class, 'destroy'])->name('session.destroy');
 });
 
