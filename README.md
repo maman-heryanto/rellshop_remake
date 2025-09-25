@@ -57,11 +57,10 @@ The goal of this project is to provide a solid boilerplate for developing profes
 ## ⚡ Installation
 
 ```bash
-git clone https://github.com/your-username/website.git
+git clone https://github.com/maman-heryanto/rellshop_remake.git
 cd website
 
 composer install
-npm install && npm run dev
 
 cp .env.example .env
 php artisan key:generate
