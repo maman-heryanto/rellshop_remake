@@ -58,11 +58,13 @@ The goal of this project is to provide a solid boilerplate for developing profes
 
 ```bash
 git clone https://github.com/maman-heryanto/rellshop_remake.git
-cd website
+
+cd rellshop_remake
 
 composer install
 
 cp .env.example .env
+
 php artisan key:generate
 
 php artisan migrate --seed
