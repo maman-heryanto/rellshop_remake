@@ -28,6 +28,11 @@ class SessionController extends Controller
             ->addColumn('user', function ($row) {
                 return $row->user ? $row->user->name : '-';
             })
+            ->filterColumn('user', function($query, $keyword) {
+                $query->whereHas('user', function($q) use ($keyword) {
+                    $q->where('name', 'like', "%{$keyword}%");
+                });
+            })
             ->addColumn('status', function ($row) {
                 if ($row->user) {
                     return '<span class="badge bg-success">Active</span>'; // active

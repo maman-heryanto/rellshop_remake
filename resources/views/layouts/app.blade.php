@@ -242,12 +242,12 @@
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#roll" data-bs-toggle="collapse"
                                 role="button" aria-expanded="false" aria-controls="roll">
-                                <i class="ri-shopping-cart-2-line"></i> <span data-key="t-dashboards">ROLL (soon)</span>
+                                <i class="ri-shopping-cart-2-line"></i> <span data-key="t-dashboards">ROLL</span>
                             </a>
                             <div class="collapse menu-dropdown" id="roll">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="{{ route('home') }}" class="nav-link">
+                                        <a href="{{ route('roll-in.menu') }}" class="nav-link">
                                             Roll In</a>
                                     </li>
                                     <li class="nav-item">

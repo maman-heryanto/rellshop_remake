@@ -90,7 +90,7 @@
                                             <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Sample3</p>
                                         </div>
                                         <div class="flex-shrink-0">
-                                            <h5 class="text-success fs-14 mb-0">
+                                            <h5 class="text-success fs-14 mb-0"> 
                                                 {{-- <i class="ri-arrow-right-up-line fs-13 align-middle"></i> +29.08 % --}}
                                             </h5>
                                         </div>
