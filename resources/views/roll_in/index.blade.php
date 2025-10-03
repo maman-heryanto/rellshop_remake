@@ -9,9 +9,9 @@
                         <h4 class="card-title mb-0 flex-grow-1">Roll In Datatable</h4>
                         <div class="flex-shrink-0">
                             <div class="form-check form-switch form-switch-right form-switch-md">
-                                <label class="form-label mb-0">Machine</label>
+                                <label class="form-label mb-0"> </label>
                                 <select id="filter_machine_id" class="form-control">
-                                    <option value="">-- All --</option>
+                                    <option value="">-- All Roll --</option>
                                 </select>
                             </div>
                             <div class="form-check form-switch form-switch-right form-switch-md">
